@@ -50,5 +50,22 @@ class Tanh(object):
     @staticmethod
     def calc_d(v):
         return 1 - np.tanh(v) ** 2
+    
+    
+class Mish(object):
+    @staticmethod
+    def __str__():
+        return "mish"
+
+    @staticmethod
+    def calc(v):
+        return v * np.tanh(np.log(1+np.exp(x)))
+
+    @staticmethod
+    def calc_d(v):
+        omega = 4 * (v + 1) + 4 * np.exp(2 * v) + np.exp(3 * v) + np.exp(v) * ((4 * v) + 6)
+        delta = 2 * np.exp(v) + np.exp(2 * v) + 2
+        return (np.exp(v) * omega)/delta ** 2
+
 
 
